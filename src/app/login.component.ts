@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import { PasswordValidator } from "./passwordValidator";
+import { LoginService } from "./login.service";
 
 @Component({
 selector:'login',
@@ -15,7 +16,10 @@ export class LoginComponent{
             PasswordValidator.cannotContainSpace]))
     });
     login(){
-        console.log(this.form.value);
+        let loginService=new LoginService();
+        var result = loginService.login(this.form.controls['username'].value, this.form.controls['password'].value)
+        if(!result){ this.form.controls['password'].setErrors({invalidLogin:true});
+    }
     }
 
 }
