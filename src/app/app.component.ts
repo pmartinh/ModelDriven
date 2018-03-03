@@ -11,6 +11,9 @@ import 'rxjs/add/operator/distinctUntilChanged';
 `
  })
 export class AppComponent {
+
+  // este comentario es de la rama 1
+  
   searchControl= new FormControl();
   constructor(){
     this.searchControl.valueChanges.
